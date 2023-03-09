@@ -10,7 +10,11 @@
   <script type="module">
     const element = React.createElement('div', {
       className: 'container',
-      children: 'Hello World',
+      children: [
+        React.createElement('span', {children: 'Hello'}),
+        ' ',
+        React.createElement('span', null, 'World'),
+      ],
     })
     const root = ReactDOM.createRoot(document.getElementById('root'))
     root.render(element)
