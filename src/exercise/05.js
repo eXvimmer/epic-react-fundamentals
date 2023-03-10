@@ -4,37 +4,52 @@
 import * as React from 'react'
 import '../box-styles.css'
 
-const smallBox = (
-  <div
-    className="box box--small"
-    style={{backgroundColor: 'lightblue', fontStyle: 'italic'}}
-  >
-    small lightblue box
-  </div>
-)
-const mediumBox = (
-  <div
-    className="box box--medium"
-    style={{backgroundColor: 'pink', fontStyle: 'italic'}}
-  >
-    medium pink box
-  </div>
-)
-const largeBox = (
-  <div
-    className="box box--large"
-    style={{backgroundColor: 'orange', fontStyle: 'italic'}}
-  >
-    large orange box
-  </div>
-)
+function Box({children, styles, size = 'small'}) {
+  size = size.toLowerCase()
+  if (size !== 'small' && size !== 'medium' && size !== 'large') {
+    console.warn('size should be small|medium|large. set to small')
+    size = 'small'
+  }
+  return (
+    <div
+      className={`box box--${size}`}
+      style={{
+        fontStyle: 'italic',
+        ...styles,
+      }}
+    >
+      {children}
+    </div>
+  )
+}
 
 function App() {
   return (
     <div>
-      {smallBox}
-      {mediumBox}
-      {largeBox}
+      <Box
+        size="small"
+        styles={{
+          backgroundColor: 'lightblue',
+        }}
+      >
+        small lightblue box
+      </Box>
+      <Box
+        styles={{
+          backgroundColor: 'pink',
+        }}
+        size="midium"
+      >
+        medium pink box
+      </Box>
+      <Box
+        styles={{
+          backgroundColor: 'orange',
+        }}
+        size="large"
+      >
+        medium orange box
+      </Box>
     </div>
   )
 }
