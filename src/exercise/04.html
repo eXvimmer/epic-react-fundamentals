@@ -3,6 +3,7 @@
 
 <body>
   <div id="root"></div>
+  <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
   <script src="https://unpkg.com/react@18.1.0/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@18.1.0/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone@7.12.4/babel.js"></script>
@@ -15,17 +16,9 @@
       )
     }
 
-    const PropTypes = {
-      string(props, propName, componentName) {
-        if (typeof props[propName] !== 'string') {
-          throw new Error(`${propName} should be of type string`)
-        }
-      },
-    }
-
     Message.propTypes = {
-      greeting: PropTypes.string,
-      subject: PropTypes.string,
+      greeting: PropTypes.string.isRequired,
+      subject: PropTypes.string.isRequired,
     }
 
     const element = (
